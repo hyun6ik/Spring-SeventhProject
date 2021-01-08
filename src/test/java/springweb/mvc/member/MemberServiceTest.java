@@ -1,7 +1,9 @@
 package springweb.mvc.member;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import springweb.mvc.AppConfig;
 import springweb.mvc.domain.Grade;
 import springweb.mvc.domain.Member;
 import springweb.mvc.order.Order;
@@ -14,9 +16,16 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MemberServiceTest {
+    MemberService memberService;
+    OrderService orderService;
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
+    }
+
     @Test
     public void join() {
         //given
@@ -31,7 +40,7 @@ public class MemberServiceTest {
     }
 
     @Test
-    public void createOrder(){
+    void createOrder(){
         //given
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
