@@ -2,6 +2,7 @@ package springweb.mvc;
 
 import springweb.mvc.discount.DiscountPolicy;
 import springweb.mvc.discount.FixDiscountPolicy;
+import springweb.mvc.discount.RateDiscountPolicy;
 import springweb.mvc.repository.MemoryMemberRepository;
 import springweb.mvc.service.MemberService;
 import springweb.mvc.service.MemberServiceImpl;
@@ -23,7 +24,7 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy(){
-        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 
 
