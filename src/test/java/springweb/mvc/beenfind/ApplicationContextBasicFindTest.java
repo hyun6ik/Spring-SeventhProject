@@ -50,7 +50,7 @@ public class ApplicationContextBasicFindTest {
     public void findBeanByNameX() throws Exception {
         assertThrows(NoSuchBeanDefinitionException.class,
                 () -> ac.getBean("xxxx", MemberService.class));
-        
+
 
     }
 
