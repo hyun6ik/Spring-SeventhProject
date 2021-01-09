@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import springweb.mvc.AppConfig;
 import springweb.mvc.repository.MemberRepository;
+import springweb.mvc.service.MemberService;
 import springweb.mvc.service.MemberServiceImpl;
 import springweb.mvc.service.OrderServiceImpl;
 
@@ -28,5 +29,16 @@ public class ConfigurationSingletonTest {
         System.out.println("orderService -> memberRepository = " + memberRepository2);
         System.out.println("memberRepository = " + memberRepository);
         
+    }
+
+    @Test
+    public void configurationDeep() throws Exception {
+        //given
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class);
+        //when
+
+        //then
+        System.out.println("bean = " + bean.getClass());
     }
 }
