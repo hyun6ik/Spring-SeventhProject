@@ -9,6 +9,9 @@ import springweb.mvc.service.MemberService;
 import static org.assertj.core.api.Assertions.*;
 
 public class SingletonTest {
+    //싱글톤 패턴 : 클래스의 인스턴스가 딱 1개만 생성되는 것을 보장하는 디자인 패턴
+    // private생성자를 사용해서 외부에서 임의로 new키워드를 사용하지 못하도록 막야아한다.
+
 
     @Test
     @DisplayName("스프링 없는 순수한 DI 컨테이너")
@@ -27,5 +30,22 @@ public class SingletonTest {
 
         assertThat(memberService1).isNotSameAs(memberService2);
 
+    }
+
+    @Test
+    @DisplayName("싱글톤 패턴을 적용한 객체 사용")
+    public void SingletonServiceTest() throws Exception {
+        //given
+        SingletonService singletonService1 = SingletonService.getInstance();
+        SingletonService singletonService2 = SingletonService.getInstance();
+        //when
+        
+        //then
+        System.out.println("singletonService1 = " + singletonService1);
+        System.out.println("singletonService2 = " + singletonService2);
+        assertThat(singletonService1).isSameAs(singletonService2);
+
+        //same == 참조
+        //equal
     }
 }
