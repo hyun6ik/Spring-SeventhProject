@@ -1,8 +1,10 @@
 package springweb.mvc.discount;
 
+import org.springframework.stereotype.Component;
 import springweb.mvc.domain.Grade;
 import springweb.mvc.domain.Member;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private int discountPercent = 10;

@@ -1,5 +1,7 @@
 package springweb.mvc.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import springweb.mvc.discount.DiscountPolicy;
 import springweb.mvc.discount.FixDiscountPolicy;
 import springweb.mvc.discount.RateDiscountPolicy;
@@ -8,11 +10,13 @@ import springweb.mvc.order.Order;
 import springweb.mvc.repository.MemberRepository;
 import springweb.mvc.repository.MemoryMemberRepository;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
