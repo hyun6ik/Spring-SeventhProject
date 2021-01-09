@@ -15,18 +15,32 @@ import springweb.mvc.service.OrderServiceImpl;
 @Configuration
 public class AppConfig {
 
+    //@Bean memberService -> new MemoryMemberRepository()
+    //@Bean orderService -> new MemoryMemberRepository()
+    //결과적으로 각각 다른 2개의 MemoryMemberRepository가 생성되면서 싱글톤이 깨지는 것 처럼 보인다.
+
+    //call AppConfig.memberService
+    //call AppConfig.memberRepository
+    //call AppConfig.memberRepository
+    //call AppConfig.orderService
+    //call AppConfig.memberRepository
+    //but 1번씩만 호출함
+
     @Bean
     public MemberService memberService(){
+        System.out.println("AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
+        System.out.println("AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
     @Bean
