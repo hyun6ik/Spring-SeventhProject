@@ -12,7 +12,7 @@ import springweb.mvc.repository.MemberRepository;
 import springweb.mvc.repository.MemoryMemberRepository;
 
 @Component
-@RequiredArgsConstructor
+
 public class OrderServiceImpl implements OrderService{
 
     //필드주입 : 외부에서 변경 불가능해서 좋은 방법이 아니다. but 테스트 코트에서는 사용가능
@@ -20,6 +20,12 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     //@Autowired
     private final DiscountPolicy discountPolicy;
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
@@ -42,10 +48,5 @@ public class OrderServiceImpl implements OrderService{
 //        this.discountPolicy = discountPolicy;
 //    }
 //
-//    @Autowired
-//    public void setMemberRepository(MemberRepository memberRepository) {
-//        System.out.println("memberRepository = " + memberRepository);
-//        this.memberRepository = memberRepository;
-//    }
 
 }
