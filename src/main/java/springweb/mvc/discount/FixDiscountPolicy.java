@@ -1,10 +1,12 @@
 package springweb.mvc.discount;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import springweb.mvc.domain.Grade;
 import springweb.mvc.domain.Member;
 
 @Component
+//@Qualifier("fixDiscountPolicy")
 public class FixDiscountPolicy implements DiscountPolicy {
 
     private int discountFixAmount = 1000;
