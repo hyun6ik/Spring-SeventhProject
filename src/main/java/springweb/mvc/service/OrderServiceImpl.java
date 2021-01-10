@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy;
 
 
-    //수정자 주입(setter 주입) : 선택,변경 가능성있는 의존관계에 사용
+//    수정자 주입(setter 주입) : 선택,변경 가능성있는 의존관계에 사용
 //    @Autowired
 //    public void setDiscountPolicy(DiscountPolicy discountPolicy){
 //        System.out.println("discountPolicy = " + discountPolicy);
