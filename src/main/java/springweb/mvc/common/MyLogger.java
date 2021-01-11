@@ -17,6 +17,10 @@ public class MyLogger {
     private String uuid;
     private String requestURL;
 
+    public void setRequestURL(String requestURL) {
+        this.requestURL = requestURL;
+    }
+
     public void log(String message){
         System.out.println("[" + uuid + "]" + "[" + requestURL + "]" + message);
     }
@@ -24,7 +28,7 @@ public class MyLogger {
     @PostConstruct
     public void init(){
        uuid = UUID.randomUUID().toString();
-        System.out.println("[" + uuid + "] request scope bean create : " + this );
+       System.out.println("[" + uuid + "] request scope bean create : " + this );
     }
 
     @PreDestroy
