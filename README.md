@@ -1,2 +1,2 @@
 # Spring-SeventhProject
-Spring mvc공부
+Spring 핵심 원리 복습
